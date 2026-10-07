@@ -1,0 +1,31 @@
+<!DOCTYPE html <html class=test data-mode=stress>
+
+<head>
+    <title>Broken fixture<title>
+            <meta charset=utf-8>
+
+<body>
+    <header>
+        <h1>Recovery test
+            <nav>
+                <ul>
+                    <li><a href=/one>One
+                    <li><a href='/two'>Two
+                </ul>
+            </nav>
+    </header>
+    <div class=outer disabled data-empty="">
+        <p>Unclosed paragraph <strong>and overlapping
+    </div>
+    <section id=broken>
+        <article>
+            <h2>Missing closures<p>Text before an orphan close</aside>
+    </section>
+    </orphan><span title="contains > safely">quoted value</span></ghost>
+    <form action=/submit method=post><input type=text name=user required><input name=flag checked><button>Send
+            <!-- comment without a closing marker
+<div>Visible after comment
+<style>.broken { color: red; } <script>if (a < b) { console.log("raw"); }</script>
+<script type=text/javascript>const marker = "<div>"; if (x < y) { marker; }</script>
+<![CDATA[ <not-an-element> raw cdata ]]><br/><img src=image.png alt='photo'/>
+</body>

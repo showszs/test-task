@@ -1,0 +1,39 @@
+Act as a Senior Software Engineer specializing in compiler design, parsers, and robust system architecture. Implement an industrial-grade, crash-proof HTML-to-JSON parser in vanilla JavaScript for the file `html2json.js`, adhering strictly to the constraints and specifications below:
+
+1. Core Architecture & Strict Constraints:
+   - Function Signature: `function html2json(html)` returning a formatted JSON string (`JSON.stringify(..., null, 2)`).
+   - ZERO DOM PARSERS ALLOWED: Do NOT use `DOMParser`, `document.createElement`, `innerHTML`, or external parsing dependencies.
+   - Parsing Engine: Implement a deterministic tokenization engine using regular expressions coupled with an explicit LIFO stack automaton to reconstruct hierarchical parent-child trees.
+
+2. Node Schema in JSON:
+   - Element Node:
+     {
+       "tag": "tagName",
+       "attributes": { "key": "value", "booleanAttr": true },
+       "children": []
+     }
+   - Text Node:
+     {
+       "type": "text",
+       "content": "trimmed text content"
+     }
+
+3. Fault-Tolerance & Edge-Case Resilience (The engine MUST NOT crash under any circumstance):
+   - Void / Self-closing Elements: Maintain an exhaustive lookup (Set) for HTML5 void tags (`area`, `base`, `br`, `col`, `embed`, `hr`, `img`, `input`, `link`, `meta`, `param`, `source`, `track`, `wbr`) as well as explicit XML-style self-closing syntax (`<tag />`). Ensure they append to the active parent without mutating stack depth.
+   - Malformed / Dirty HTML Recovery:
+     * Unclosed tags (e.g., `<div><p>Hello</div>`): Gracefully unwind the stack when encountering an ancestor closing tag.
+     * Orphan closing tags (e.g., stray `</div>` or mismatched tags): Handle safely without dropping below the virtual root or throwing runtime exceptions.
+     * Mismatched nesting: Prevent null-pointer dereferences (`Cannot read properties of undefined`).
+     * Non-standard attribute syntax: Support unquoted, single-quoted, double-quoted, empty, and boolean attributes seamlessly.
+     * Metadata & Comments: Sanitize or safely bypass `<!DOCTYPE ...>`, `<!-- comments -->`, and CDATA blocks.
+     * Script/Style handling: Ensure raw code inside `<script>` and `<style>` does not break tokenization.
+     * Type boundary protection: Defend against `null`, `undefined`, non-string inputs, or empty payloads by safely returning a valid empty JSON representation `[]`.
+   - Implement an outer defensive error-handling boundary (`try...catch`) as a fail-safe fallback.
+
+4. Comprehensive Stress-Test Samples:
+   - Generate production-grade, heavy HTML files for the `html_samples/` directory:
+     * `sample1_complex_valid.html`: A deep, realistic semantic page (header, complex nested navigation, responsive forms with multiple input variants, data tables, and cards).
+     * `sample2_malformed_edge_cases.html`: An aggressive stress-test document full of broken syntax (unclosed tags, overlapping tags, orphan closures, unquoted and boolean attributes, and raw comments).
+     * `sample3_large_document.html`: A large-scale document featuring multi-root sibling trees, embedded inline SVGs, script/style blocks, and mixed-case tags.
+
+Output clean, production-ready, and well-documented JavaScript code for `html2json.js`, followed by the exact file contents for the test samples.

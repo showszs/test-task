@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Northstar Conference</title>
+    <link rel="stylesheet" href="/assets/site.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <a class="logo" href="/">Northstar</a>
+        <nav aria-label="Primary navigation">
+            <ul>
+                <li><a href="/schedule">Schedule</a></li>
+                <li><a href="/speakers">Speakers</a></li>
+                <li><a href="/venue">Venue</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+        <button type="button" aria-expanded="false" aria-controls="mobile-menu">Menu</button>
+    </header>
+    <main>
+        <section class="hero" id="home">
+            <p class="eyebrow">October 14-16, 2026</p>
+            <h1>Ideas for a changing world</h1>
+            <p>Three days of practical talks, workshops, and conversations for thoughtful builders.</p>
+            <a class="button" href="#registration">Reserve a seat</a>
+        </section>
+        <section id="schedule">
+            <h2>Conference schedule</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Time</th>
+                        <th scope="col">Session</th>
+                        <th scope="col">Room</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">09:00</th>
+                        <td><a href="/sessions/opening">Opening keynote</a></td>
+                        <td>Auditorium</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">11:30</th>
+                        <td>Designing for uncertainty</td>
+                        <td>Room A</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">14:00</th>
+                        <td>Systems workshop</td>
+                        <td>Lab 2</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="cards" aria-labelledby="speakers-heading">
+            <h2 id="speakers-heading">Featured speakers</h2>
+            <article class="card"><img src="/images/maya.jpg" alt="Maya Chen">
+                <h3>Maya Chen</h3>
+                <p>Research director, Field Notes</p>
+            </article>
+            <article class="card"><img src="/images/omar.jpg" alt="Omar Reyes">
+                <h3>Omar Reyes</h3>
+                <p>Founder, Common Thread</p>
+            </article>
+        </section>
+        <section id="registration">
+            <h2>Registration</h2>
+            <form action="/register" method="post">
+                <label for="name">Full name</label><input id="name" name="name" type="text" required
+                    autocomplete="name">
+                <label for="email">Email address</label><input id="email" name="email" type="email"
+                    placeholder="you@example.com" required>
+                <label for="ticket">Ticket type</label><select id="ticket" name="ticket">
+                    <option value="standard">Standard</option>
+                    <option value="student">Student</option>
+                </select>
+                <label><input type="checkbox" name="updates" checked> Send me occasional updates</label>
+                <button type="submit">Complete registration</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2026 Northstar Conference</p><a href="/privacy">Privacy</a>
+    </footer>
+</body>
+
+</html>

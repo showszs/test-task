@@ -1,0 +1,126 @@
+<!doctype html>
+<HTML LANG="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Atlas Archive</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .panel {
+            display: grid;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Atlas Archive</h1>
+        <nav><a href="#one">One</a><a href="#two">Two</a><a href="#three">Three</a></nav>
+    </header>
+    <main>
+        <svg viewBox="0 0 120 40" role="img" aria-label="Atlas mark">
+            <rect width="120" height="40" fill="#153243" />
+            <circle cx="20" cy="20" r="10" fill="#e76f51" /><text x="38" y="25" fill="white">ATLAS</text>
+        </svg>
+        <section id="one">
+            <h2>Collection one</h2>
+            <div class="panel">
+                <article>
+                    <h3>Entry 001</h3>
+                    <p>Historical notes and primary sources.</p>
+                </article>
+                <article>
+                    <h3>Entry 002</h3>
+                    <p>Maps, records, and field observations.</p>
+                </article>
+                <article>
+                    <h3>Entry 003</h3>
+                    <p>Letters preserved from the northern archive.</p>
+                </article>
+            </div>
+        </section>
+        <section id="two">
+            <h2>Collection two</h2>
+            <ol>
+                <li>Materials and methods</li>
+                <li>Cataloguing practice</li>
+                <li>Preservation standards</li>
+                <li>Public access</li>
+            </ol>
+        </section>
+        <section id="three">
+            <h2>Collection three</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Records</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2021</td>
+                        <td>1,204</td>
+                        <td>Digitized</td>
+                    </tr>
+                    <tr>
+                        <td>2022</td>
+                        <td>1,887</td>
+                        <td>Reviewed</td>
+                    </tr>
+                    <tr>
+                        <td>2023</td>
+                        <td>2,410</td>
+                        <td>In progress</td>
+                    </tr>
+                    <tr>
+                        <td>2024</td>
+                        <td>3,006</td>
+                        <td>Digitized</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="records">
+            <h2>Recent records</h2>
+            <article>
+                <h3>Record A</h3>
+                <p>North ridge survey.</p>
+                <ul>
+                    <li>Latitude 41.2</li>
+                    <li>Longitude -71.4</li>
+                </ul>
+            </article>
+            <article>
+                <h3>Record B</h3>
+                <p>Harbor inventory.</p>
+                <ul>
+                    <li>Latitude 40.8</li>
+                    <li>Longitude -70.9</li>
+                </ul>
+            </article>
+            <article>
+                <h3>Record C</h3>
+                <p>Valley correspondence.</p>
+                <ul>
+                    <li>Latitude 42.1</li>
+                    <li>Longitude -72.0</li>
+                </ul>
+            </article>
+        </section>
+    </main>
+    <footer>
+        <p>Atlas Archive, public collection</p>
+    </footer>
+    <script>
+        const records = [{ id: 1, label: "north" }, { id: 2, label: "south" }];
+        function render(item) { return `<article data-id="${item.id}">${item.label}</article>`; }
+        console.log(records.map(render).join(""));
+    </script>
+</body>
+
+</HTML>
